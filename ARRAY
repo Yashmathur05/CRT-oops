@@ -1,0 +1,12 @@
+# prefix sum in Array
+arr = [1, 2, 3, 4, 5]
+
+prefix = []
+
+sum = 0
+
+for i in arr:
+    sum = sum + i
+    prefix.append(sum)
+
+print(prefix)
