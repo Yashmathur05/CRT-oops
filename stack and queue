@@ -1,0 +1,119 @@
+#***********************************************************************************************************************
+#implemennt using linked list
+# Node Class
+class Node:
+
+    # Constructor
+    def __init__(self, data):
+
+        self.value = data
+        self.next = None
+
+
+# Stack Class
+class Stack:
+
+    # Constructor
+    def __init__(self):
+
+        self.head = None
+
+
+    # Push Function
+    def push(self, v):
+
+        # If stack is empty
+        if self.head is None:
+
+            n = Node(v)
+
+            self.head = n
+
+        # If stack already has elements
+        else:
+
+            n = Node(v)
+
+            n.next = self.head
+
+            self.head = n
+
+
+    # Pop Function
+    def pop(self):
+
+        if self.head is None:
+
+            print("Stack Underflow")
+
+        else:
+
+            n = self.head.next
+
+            self.head = n
+
+
+    # Top Function
+    def top(self):
+
+        if self.head is None:
+
+            print("Stack Empty")
+
+        else:
+
+            return self.head.value
+
+
+    # Empty Function
+    def empty(self):
+
+        if self.head is None:
+
+            return True
+
+        else:
+
+            return False
+
+
+    # Display Function
+    def display(self):
+
+        temp = self.head
+
+        while temp is not None:
+
+            print(temp.value, end=" ")
+
+            temp = temp.next
+
+        print()
+
+
+# Main
+s = Stack()
+
+s.push(10)
+s.push(20)
+s.push(30)
+
+print("Stack Elements:")
+
+s.display()
+
+print("Top Element:", s.top())
+
+s.pop()
+
+print("After Pop:")
+
+s.display()
+
+if s.empty():
+
+    print("Stack is Empty")
+
+else:
+
+    print("Stack is Not Empty")
