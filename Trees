@@ -1,0 +1,108 @@
+#TREES 
+#Leetcode problem 94
+
+### Iterative approach
+class Solution:
+    def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+
+        stack = []
+        ans = []
+
+        current = root
+
+        while current or stack:
+
+            while current:
+                stack.append(current)
+                current = current.left
+
+            current = stack.pop()
+
+            ans.append(current.val)
+
+            current = current.right
+
+        return ans
+#***************************************************************************
+ #REcursive version 
+ class Solution:
+    def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+
+        ans = []
+
+        def inorder(node):
+
+            if not node:
+                return
+
+            inorder(node.left)
+            ans.append(node.val)
+            inorder(node.right)
+
+        inorder(root)
+
+        return ans
+#*******************************************************************************
+# simple we are using rercursion here
+
+class Solution:
+    def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+
+        ans = []
+
+        def inorder(node):
+
+            if node is None:
+                return
+
+            # Left
+            inorder(node.left)
+
+            # Root
+            ans.append(node.val)
+
+            # Right
+            inorder(node.right)
+
+        inorder(root)
+
+        return ans
+#***********************************************************************************************************************
+##problem number 257 leetcode
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+
+class Solution:
+    def binaryTreePaths(self, root: Optional[TreeNode]) -> List[str]:
+
+        ans = []
+
+        def dfs(node, path):
+
+            if not node:
+                return
+
+            # Add current node to path
+            path += str(node.val)
+
+            # Leaf node
+            if not node.left and not node.right:
+                ans.append(path)
+                return
+
+            # Go left and right
+            path += "->"
+
+            dfs(node.left, path)
+            dfs(node.right, path)
+
+        dfs(root, "")
+
+        return ans
+#***********************************************************************************************************************
+
